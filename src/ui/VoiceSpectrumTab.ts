@@ -102,9 +102,9 @@ export class VoiceSpectrumTab {
       processor.connect(this.audioContext.destination);
 
       const btnRecord = this.container.querySelector("#btn-voice-record") as HTMLButtonElement | null;
-      const btnStop = this.container.querySelector("#btn-voice-stop") as HTMLButtonElement | null;
+      const btn정지 = this.container.querySelector("#btn-voice-stop") as HTMLButtonElement | null;
       if (btnRecord) btnRecord.disabled = true;
-      if (btnStop) btnStop.disabled = false;
+      if (btn정지) btn정지.disabled = false;
 
       const timerEl = this.container.querySelector("#lbl-voice-timer");
       this.timerInterval = window.setInterval(() => {
@@ -132,10 +132,10 @@ export class VoiceSpectrumTab {
     }
 
     const btnRecord = this.container.querySelector("#btn-voice-record") as HTMLButtonElement | null;
-    const btnStop = this.container.querySelector("#btn-voice-stop") as HTMLButtonElement | null;
+    const btn정지 = this.container.querySelector("#btn-voice-stop") as HTMLButtonElement | null;
     const btnPlay = this.container.querySelector("#btn-voice-play") as HTMLButtonElement | null;
     if (btnRecord) btnRecord.disabled = false;
-    if (btnStop) btnStop.disabled = true;
+    if (btn정지) btn정지.disabled = true;
     if (btnPlay) btnPlay.disabled = false;
 
     // Concatenate PCM
@@ -212,7 +212,7 @@ export class VoiceSpectrumTab {
       elBox.innerHTML = `
         <div class="p-3 border border-lab-black bg-white rounded-sm space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-lab-black">MULTI-FEATURE DISTANCE TO BASELINE (D_voice)</span>
+            <span class="text-xs font-mono font-bold text-lab-black">기준 템플릿과의 다변수 특징 거리 (D_voice)</span>
             <span class="text-xs font-mono font-bold text-lab-red">D = ${dist.totalDistance.toFixed(3)}</span>
           </div>
           <div class="grid grid-cols-5 gap-2 text-[10px] font-mono">
@@ -250,12 +250,12 @@ export class VoiceSpectrumTab {
   }
   private bindEvents() {
     const btnRec = this.container.querySelector("#btn-voice-record");
-    const btnStop = this.container.querySelector("#btn-voice-stop");
+    const btn정지 = this.container.querySelector("#btn-voice-stop");
     const btnPlay = this.container.querySelector("#btn-voice-play");
     const btnSaveBase = this.container.querySelector("#btn-save-baseline");
 
     btnRec?.addEventListener("click", () => this.startRecording());
-    btnStop?.addEventListener("click", () => this.stopRecording());
+    btn정지?.addEventListener("click", () => this.stopRecording());
     btnPlay?.addEventListener("click", () => this.playRecordedAudio());
 
     btnSaveBase?.addEventListener("click", () => {
@@ -280,10 +280,10 @@ export class VoiceSpectrumTab {
             <div class="w-2.5 h-2.5 bg-lab-red rounded-full"></div>
             <div>
               <h2 class="text-xs font-mono font-bold text-lab-black uppercase tracking-wider">
-                Voice Spectrum & STFT Analysis Module
+                음성 스펙트럼 및 STFT 분석 모듈
               </h2>
               <p class="text-[11px] font-mono text-lab-grayDark">
-                Vowel & Speech Recording, STFT Spectrogram, Acoustic Feature Extraction
+                모음 및 음성 신호 녹음, 시간-주파수 스펙트로그램, 음향 특징량 추출
               </p>
             </div>
           </div>
@@ -293,16 +293,16 @@ export class VoiceSpectrumTab {
               0.0s / 15.0s
             </span>
             <button id="btn-voice-record" class="lab-btn-accent px-4 py-2">
-              ● Record Voice
+              음성 녹음 시작
             </button>
             <button id="btn-voice-stop" class="lab-btn px-4 py-2" disabled>
-              ⏹ Stop
+              정지
             </button>
             <button id="btn-voice-play" class="lab-btn px-3 py-2" disabled>
-              ▶ Play Audio
+              녹음 재생
             </button>
             <button id="btn-save-baseline" class="lab-btn px-3 py-2">
-              ⭐ Save Baseline Template
+              기준 템플릿 저장
             </button>
           </div>
         </div>
@@ -317,7 +317,7 @@ export class VoiceSpectrumTab {
             <div class="lab-card flex flex-col">
               <div class="flex items-center justify-between pb-2 mb-2 border-b border-lab-light">
                 <span class="text-xs font-mono font-bold text-lab-black">
-                  C. High-Resolution STFT Spectrogram (2048 FFT / Hann / 512 Hop)
+                  C. 고해상도 STFT 스펙트로그램 (2048 FFT / Hann / 512 Hop)
                 </span>
                 <span class="text-[10px] font-mono text-lab-grayDark">Time vs Frequency (0~5kHz)</span>
               </div>
@@ -330,7 +330,7 @@ export class VoiceSpectrumTab {
             <div class="lab-card flex flex-col">
               <div class="flex items-center justify-between pb-2 mb-2 border-b border-lab-light">
                 <span class="text-xs font-mono font-bold text-lab-black">
-                  A. Time-Domain Waveform Sample
+                  A. 시간 영역 음성 파형
                 </span>
                 <span class="text-[10px] font-mono text-lab-grayDark">Initial PCM Buffer</span>
               </div>
@@ -346,7 +346,7 @@ export class VoiceSpectrumTab {
             <div class="lab-card flex flex-col">
               <div class="flex items-center justify-between pb-2 mb-2 border-b border-lab-light">
                 <span class="text-xs font-mono font-bold text-lab-black">
-                  B. Average Frequency Spectrum
+                  B. 평균 주파수 스펙트럼
                 </span>
                 <span class="text-[10px] font-mono text-lab-grayDark">Mid-Frame Power</span>
               </div>
@@ -358,50 +358,50 @@ export class VoiceSpectrumTab {
             <!-- Extracted Acoustic Features Table -->
             <div class="lab-card space-y-3">
               <div class="flex items-center justify-between pb-1 border-b border-lab-light">
-                <span class="text-xs font-mono font-bold text-lab-black">EXTRACTED ACOUSTIC FEATURES</span>
+                <span class="text-xs font-mono font-bold text-lab-black">추출된 음향 특징량</span>
                 <span class="text-[10px] font-mono text-lab-grayDark">Direct DSP Calculation</span>
               </div>
 
               <div class="grid grid-cols-2 gap-3 text-xs font-mono">
                 <div class="p-2 bg-lab-bg rounded-sm border border-lab-light">
-                  <div class="text-[10px] text-lab-grayDark">DURATION</div>
+                  <div class="text-[10px] text-lab-grayDark">발화 길이 (Duration)</div>
                   <div id="feat-duration" class="font-bold text-lab-black text-sm">---</div>
                 </div>
 
                 <div class="p-2 bg-lab-bg rounded-sm border border-lab-light">
-                  <div class="text-[10px] text-lab-grayDark">ESTIMATED PITCH (F0)</div>
+                  <div class="text-[10px] text-lab-grayDark">추정 피치 (Pitch F0)</div>
                   <div id="feat-pitch" class="font-bold text-lab-black text-sm">---</div>
                 </div>
 
                 <div class="p-2 bg-lab-bg rounded-sm border border-lab-light">
-                  <div class="text-[10px] text-lab-grayDark">AVG / PEAK RMS</div>
+                  <div class="text-[10px] text-lab-grayDark">평균 / 피크 RMS</div>
                   <div class="font-bold text-lab-black text-sm">
                     <span id="feat-avg-rms">---</span> / <span id="feat-peak-rms">---</span>
                   </div>
                 </div>
 
                 <div class="p-2 bg-lab-bg rounded-sm border border-lab-light">
-                  <div class="text-[10px] text-lab-grayDark">SPECTRAL CENTROID</div>
+                  <div class="text-[10px] text-lab-grayDark">스펙트럼 중심 (Centroid)</div>
                   <div id="feat-centroid" class="font-bold text-lab-black text-sm">---</div>
                 </div>
 
                 <div class="p-2 bg-lab-bg rounded-sm border border-lab-light">
-                  <div class="text-[10px] text-lab-grayDark">SPECTRAL ROLLOFF (85%)</div>
+                  <div class="text-[10px] text-lab-grayDark">스펙트럼 롤오프 (Rolloff 85%)</div>
                   <div id="feat-rolloff" class="font-bold text-lab-black text-sm">---</div>
                 </div>
 
                 <div class="p-2 bg-lab-bg rounded-sm border border-lab-light">
-                  <div class="text-[10px] text-lab-grayDark">SPECTRAL BANDWIDTH</div>
+                  <div class="text-[10px] text-lab-grayDark">스펙트럼 대역폭 (Bandwidth)</div>
                   <div id="feat-bandwidth" class="font-bold text-lab-black text-sm">---</div>
                 </div>
 
                 <div class="p-2 bg-lab-bg rounded-sm border border-lab-light">
-                  <div class="text-[10px] text-lab-grayDark">ZERO CROSSING RATE (ZCR)</div>
+                  <div class="text-[10px] text-lab-grayDark">영교차율 (ZCR)</div>
                   <div id="feat-zcr" class="font-bold text-lab-black text-sm">---</div>
                 </div>
 
                 <div class="p-2 bg-lab-bg rounded-sm border border-lab-light">
-                  <div class="text-[10px] text-lab-grayDark">DOMINANT PEAK BANDS</div>
+                  <div class="text-[10px] text-lab-grayDark">주요 주파수 밴드 (Peaks)</div>
                   <div id="feat-formants" class="font-bold text-lab-black text-sm">---</div>
                 </div>
               </div>

@@ -95,15 +95,15 @@ export class SettingsTab {
             <span class="w-2.5 h-2.5 bg-lab-black rounded-full"></span>
             <div>
               <h2 class="text-xs font-mono font-bold text-lab-black uppercase tracking-wider">
-                System & Hardware Configuration
+                하드웨어 및 시스템 환경 설정
               </h2>
               <p class="text-[11px] font-mono text-lab-grayDark">
-                Audio Input Hardware, Web Audio DSP Parameters, Default Targets
+                오디오 입력 장치, Web Audio DSP 변수, 기본값 설정
               </p>
             </div>
           </div>
           <button id="btn-reset-settings" class="lab-btn text-xs">
-            Reset to Defaults
+            기본값으로 초기화
           </button>
         </div>
 
@@ -161,7 +161,7 @@ export class SettingsTab {
           <!-- Save Button -->
           <div class="flex justify-end">
             <button id="btn-save-settings" class="lab-btn-primary px-6 py-2">
-              ✓ Save Settings
+              설정 저장
             </button>
           </div>
         </div>

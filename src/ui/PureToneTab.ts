@@ -225,7 +225,7 @@ export class PureToneTab {
   private bindEvents() {
     const btnMic = this.container.querySelector("#btn-mic-toggle");
     const btnSynth = this.container.querySelector("#btn-synth-toggle");
-    const btnStop = this.container.querySelector("#btn-stop-audio");
+    const btn정지 = this.container.querySelector("#btn-stop-audio");
     const btnCalib = this.container.querySelector("#btn-start-calibration");
     const btnRecord = this.container.querySelector("#btn-record-trial");
 
@@ -250,8 +250,8 @@ export class PureToneTab {
       });
     }
 
-    if (btnStop) {
-      btnStop.addEventListener("click", () => {
+    if (btn정지) {
+      btn정지.addEventListener("click", () => {
         this.audioInput.stop();
       });
     }
@@ -389,14 +389,14 @@ export class PureToneTab {
     const btnCalib = this.container.querySelector("#btn-start-calibration") as HTMLButtonElement | null;
     if (btnCalib) {
       btnCalib.disabled = true;
-      btnCalib.textContent = "Calibrating (3.0s)...";
+      btnCalib.textContent = "측정 중 (3.0s)...";
     }
 
     let remaining = 3.0;
     const interval = setInterval(() => {
       remaining -= 0.5;
       if (btnCalib && remaining > 0) {
-        btnCalib.textContent = `Calibrating (${remaining.toFixed(1)}s)...`;
+        btnCalib.textContent = `측정 중 (${remaining.toFixed(1)}s)...`;
       }
     }, 500);
 
@@ -405,7 +405,7 @@ export class PureToneTab {
       this.isCalibrating = false;
       if (btnCalib) {
         btnCalib.disabled = false;
-        btnCalib.textContent = "3s Calibration";
+        btnCalib.textContent = "3초 캘리브레이션";
       }
       this.finishCalibration();
     }, 3000);
@@ -441,7 +441,7 @@ export class PureToneTab {
         <div class="p-3 border border-lab-black bg-white rounded-sm space-y-2 mt-2">
           <div class="flex items-center justify-between">
             <span class="text-xs font-mono font-bold text-lab-black">CALIBRATION PROFILE (3.0s)</span>
-            <button id="btn-close-calib" class="text-xs text-lab-grayDark hover:text-lab-black">✕</button>
+            <button id="btn-close-calib" class="text-xs text-lab-grayDark hover:text-lab-black">삭제</button>
           </div>
           <div class="grid grid-cols-3 gap-2 text-[11px] font-mono">
             <div>Freq: <span class="font-bold text-lab-black">${avgFreq.toFixed(2)} ± ${sdFreq.toFixed(2)} Hz</span></div>
@@ -482,7 +482,7 @@ export class PureToneTab {
     const expNameInput = this.container.querySelector("#input-exp-name") as HTMLInputElement | null;
     const condInput = this.container.querySelector("#input-exp-cond") as HTMLInputElement | null;
     if (expNameInput) this.experimentName = expNameInput.value || "Phase Test";
-    if (condInput) this.condition = condInput.value || "Default Condition";
+    if (condInput) this.condition = condInput.value || "Default 실험 조건";
 
     const trialId = `Trial ${String(this.trialCount).padStart(3, "0")}`;
 
@@ -522,7 +522,7 @@ export class PureToneTab {
     const btnRecord = this.container.querySelector("#btn-record-trial") as HTMLButtonElement | null;
     if (btnRecord) {
       const orig = btnRecord.innerHTML;
-      btnRecord.innerHTML = "✓ Recorded!";
+      btnRecord.innerHTML = "기록 완료";
       setTimeout(() => { btnRecord.innerHTML = orig; }, 800);
     }
   }
@@ -539,7 +539,7 @@ export class PureToneTab {
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 bg-lab-black rounded-full"></span>
                 <h2 class="text-xs font-mono font-bold text-lab-black uppercase tracking-wider">
-                  A. Time-Domain Waveform (Oscilloscope)
+                  A. 시간 영역 파형 (오실로스코프)
                 </h2>
               </div>
               <span class="text-[11px] font-mono text-lab-grayDark">Scale: [-1.0, +1.0] Normalized PCM</span>
@@ -557,7 +557,7 @@ export class PureToneTab {
                 <div class="flex items-center gap-2">
                   <span class="w-2 h-2 bg-lab-black rounded-full"></span>
                   <h2 class="text-xs font-mono font-bold text-lab-black uppercase tracking-wider">
-                    B. Frequency Spectrum (FFT)
+                    B. 주파수 스펙트럼 (FFT)
                   </h2>
                 </div>
                 <span class="text-[11px] font-mono text-lab-grayDark">0 ~ 5000 Hz</span>
@@ -573,7 +573,7 @@ export class PureToneTab {
                 <div class="flex items-center gap-2">
                   <span class="w-2 h-2 bg-lab-red rounded-full"></span>
                   <h2 class="text-xs font-mono font-bold text-lab-black uppercase tracking-wider">
-                    C. Lissajous Figure (XY)
+                    C. 리사주 도형 (XY 평면)
                   </h2>
                 </div>
               </div>
@@ -583,12 +583,12 @@ export class PureToneTab {
             </div>
           </div>
 
-          <!-- Test Signal Generator Bar -->
+          <!-- 테스트 신호 Generator Bar -->
           <div class="lab-card-compact border-dashed bg-white/60 flex flex-col gap-2">
             <div class="flex items-center justify-between">
               <span class="text-xs font-mono font-bold text-lab-dark flex items-center gap-1.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
-                SYNTHETIC TEST SIGNAL GENERATOR (Hardware-Free Verification)
+                가상 테스트 신호 발생기 (신호 합성 검증) (Hardware-Free Verification)
               </span>
               <span class="text-[10px] font-mono text-lab-grayDark">Direct PCM Synthesis</span>
             </div>
@@ -632,28 +632,28 @@ export class PureToneTab {
           <!-- Master Action Bar -->
           <div class="lab-card space-y-3">
             <div class="flex items-center justify-between pb-1 border-b border-lab-light">
-              <span class="text-xs font-mono font-bold text-lab-black">AUDIO CONTROL</span>
+              <span class="text-xs font-mono font-bold text-lab-black">오디오 신호 제어</span>
               <span id="lbl-next-trial" class="text-xs font-mono text-lab-red font-bold">Trial ${String(this.trialCount).padStart(3, "0")}</span>
             </div>
             
             <div class="grid grid-cols-3 gap-2">
               <button id="btn-mic-toggle" class="lab-btn-primary">
-                🎙️ Mic Input
+                마이크 입력
               </button>
               <button id="btn-synth-toggle" class="lab-btn">
-                ⚡ Test Signal
+                테스트 신호
               </button>
               <button id="btn-stop-audio" class="lab-btn hover:bg-red-50 hover:text-lab-red">
-                ⏹ Stop
+                정지
               </button>
             </div>
 
             <div class="grid grid-cols-2 gap-2 pt-1">
               <button id="btn-record-trial" class="lab-btn-accent text-xs py-2 font-bold">
-                💾 Record Trial
+                시행 기록 저장
               </button>
               <button id="btn-start-calibration" class="lab-btn text-xs py-2">
-                ⚙️ 3s Calibration
+                3초 캘리브레이션
               </button>
             </div>
 
@@ -662,14 +662,14 @@ export class PureToneTab {
 
           <!-- Experiment Info Card -->
           <div class="lab-card space-y-2 text-xs font-mono">
-            <div class="text-[11px] font-bold text-lab-grayDark uppercase tracking-wider">Active Experiment Metadata</div>
+            <div class="text-[11px] font-bold text-lab-grayDark uppercase tracking-wider">실험 조건 메타데이터</div>
             <div class="grid grid-cols-2 gap-2">
               <div>
-                <label class="text-[10px] text-lab-grayDark">Experiment Label</label>
+                <label class="text-[10px] text-lab-grayDark">실험명</label>
                 <input id="input-exp-name" type="text" value="${this.experimentName}" class="w-full lab-input">
               </div>
               <div>
-                <label class="text-[10px] text-lab-grayDark">Condition</label>
+                <label class="text-[10px] text-lab-grayDark">실험 조건</label>
                 <input id="input-exp-cond" type="text" value="${this.condition}" class="w-full lab-input">
               </div>
             </div>
@@ -684,14 +684,14 @@ export class PureToneTab {
           <!-- Real-Time Measured Cards -->
           <div class="lab-card space-y-3">
             <div class="flex items-center justify-between border-b border-lab-light pb-1">
-              <span class="text-xs font-mono font-bold text-lab-black">MEASUREMENTS VS REFERENCE</span>
+              <span class="text-xs font-mono font-bold text-lab-black">실시간 계측값 및 기준 비교</span>
               <span class="text-[10px] font-mono text-lab-grayDark">Smoothed (N=7)</span>
             </div>
 
             <!-- Frequency Row -->
             <div class="p-2.5 bg-lab-bg rounded-sm border border-lab-light flex items-center justify-between">
               <div>
-                <div class="text-[10px] font-mono text-lab-grayDark">FREQUENCY (f)</div>
+                <div class="text-[10px] font-mono text-lab-grayDark">진동수 (Frequency, f)</div>
                 <div id="val-meas-freq" class="text-base font-mono font-bold text-lab-black">--- Hz</div>
               </div>
               <div class="text-right">
@@ -703,7 +703,7 @@ export class PureToneTab {
             <!-- Amplitude Row -->
             <div class="p-2.5 bg-lab-bg rounded-sm border border-lab-light flex items-center justify-between">
               <div>
-                <div class="text-[10px] font-mono text-lab-grayDark">AMPLITUDE (A)</div>
+                <div class="text-[10px] font-mono text-lab-grayDark">진폭 (Amplitude, A)</div>
                 <div id="val-meas-amp" class="text-base font-mono font-bold text-lab-black">0.000</div>
               </div>
               <div class="text-right">
@@ -715,7 +715,7 @@ export class PureToneTab {
             <!-- Phase Row -->
             <div class="p-2.5 bg-lab-bg rounded-sm border border-lab-light flex items-center justify-between">
               <div>
-                <div class="text-[10px] font-mono text-lab-grayDark">PHASE DIFFERENCE (Δφ)</div>
+                <div class="text-[10px] font-mono text-lab-grayDark">위상차 (Phase Diff, Δφ)</div>
                 <div id="val-meas-phase" class="text-base font-mono font-bold text-lab-black">---°</div>
               </div>
               <div class="text-right">
@@ -728,7 +728,7 @@ export class PureToneTab {
           <!-- Normalized Error Meters & Weighted Score -->
           <div class="lab-card space-y-3">
             <div class="flex items-center justify-between border-b border-lab-light pb-1">
-              <span class="text-xs font-mono font-bold text-lab-black">NORMALIZED ERROR METRICS</span>
+              <span class="text-xs font-mono font-bold text-lab-black">정규화 오차 변수</span>
               <span class="text-[10px] font-mono text-lab-grayDark">D = Σ (w_i · D_i)</span>
             </div>
 
@@ -777,7 +777,7 @@ export class PureToneTab {
             <!-- Final D Score Banner -->
             <div class="pt-2 border-t border-lab-light flex items-center justify-between">
               <div>
-                <div class="text-[10px] font-mono font-bold text-lab-grayDark uppercase">Final Weighted Score</div>
+                <div class="text-[10px] font-mono font-bold text-lab-grayDark uppercase">가중치 복합 오차 점수</div>
                 <div class="text-[11px] font-mono text-lab-dark">Threshold: ${this.config.threshold.toFixed(2)}</div>
               </div>
               <div class="text-right">
@@ -788,10 +788,10 @@ export class PureToneTab {
             <!-- Weight Sliders Configuration Accordion -->
             <div class="pt-2 border-t border-lab-light space-y-2">
               <div class="flex items-center justify-between text-xs font-mono">
-                <span class="font-bold text-lab-black">WEIGHT COEFFICIENTS</span>
+                <span class="font-bold text-lab-black">가중치 설정</span>
                 <label class="flex items-center gap-1.5 text-[11px] text-lab-grayDark cursor-pointer">
                   <input id="chk-autonorm" type="checkbox" ${this.config.autoNormalize ? "checked" : ""} class="accent-lab-black">
-                  Auto Normalize
+                  자동 정규화 (합 1.0)
                 </label>
               </div>
 
@@ -824,7 +824,7 @@ export class PureToneTab {
 
           <!-- Reference & Tolerances Settings Box -->
           <div class="lab-card space-y-2 text-xs font-mono">
-            <span class="text-[11px] font-bold text-lab-black uppercase tracking-wider">Reference & Tolerance Targets</span>
+            <span class="text-[11px] font-bold text-lab-black uppercase tracking-wider">기준값 및 허용 오차 (Tolerances)</span>
             <div class="grid grid-cols-3 gap-2">
               <div>
                 <label class="text-[10px] text-lab-grayDark">f0 (Hz)</label>

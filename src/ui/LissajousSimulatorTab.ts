@@ -138,7 +138,7 @@ export class LissajousSimulatorTab {
             <span class="w-2.5 h-2.5 bg-lab-black rounded-full"></span>
             <div>
               <h2 class="text-xs font-mono font-bold text-lab-black uppercase tracking-wider">
-                Lissajous Mathematical Curve Simulator
+                리사주 곡선 수학 시뮬레이터
               </h2>
               <p class="text-[11px] font-mono text-lab-grayDark">
                 x(t) = Ax · sin(2π fx t) &nbsp;|&nbsp; y(t) = Ay · sin(2π fy t + φ)
@@ -162,7 +162,7 @@ export class LissajousSimulatorTab {
           <div class="md:col-span-5 space-y-4">
             <!-- Preset Buttons -->
             <div class="lab-card space-y-3">
-              <span class="text-xs font-mono font-bold text-lab-black uppercase">Standard Presets</span>
+              <span class="text-xs font-mono font-bold text-lab-black uppercase">표준 프리셋</span>
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 <button data-preset="1-1-0" class="lab-btn text-xs">1:1 / 0°</button>
                 <button data-preset="1-1-45" class="lab-btn text-xs">1:1 / 45°</button>
@@ -176,11 +176,11 @@ export class LissajousSimulatorTab {
 
             <!-- Sliders -->
             <div class="lab-card space-y-4 text-xs font-mono">
-              <span class="text-xs font-bold text-lab-black uppercase">Signal Parameters</span>
+              <span class="text-xs font-bold text-lab-black uppercase">신호 변수 설정</span>
 
               <div>
                 <div class="flex justify-between mb-1">
-                  <span class="text-lab-grayDark">Frequency X (fx):</span>
+                  <span class="text-lab-grayDark">X축 진동수 (fx):</span>
                   <span id="lbl-sim-fx" class="font-bold">1.0</span>
                 </div>
                 <input id="sim-fx" type="range" min="1" max="8" step="1" value="1" class="w-full">
@@ -188,7 +188,7 @@ export class LissajousSimulatorTab {
 
               <div>
                 <div class="flex justify-between mb-1">
-                  <span class="text-lab-grayDark">Frequency Y (fy):</span>
+                  <span class="text-lab-grayDark">Y축 진동수 (fy):</span>
                   <span id="lbl-sim-fy" class="font-bold">1.0</span>
                 </div>
                 <input id="sim-fy" type="range" min="1" max="8" step="1" value="1" class="w-full">
@@ -196,7 +196,7 @@ export class LissajousSimulatorTab {
 
               <div>
                 <div class="flex justify-between mb-1">
-                  <span class="text-lab-grayDark">Amplitude X (Ax):</span>
+                  <span class="text-lab-grayDark">X축 진폭 (Ax):</span>
                   <span id="lbl-sim-ax" class="font-bold">1.00</span>
                 </div>
                 <input id="sim-ax" type="range" min="0.1" max="1.0" step="0.05" value="1.0" class="w-full">
@@ -204,7 +204,7 @@ export class LissajousSimulatorTab {
 
               <div>
                 <div class="flex justify-between mb-1">
-                  <span class="text-lab-grayDark">Amplitude Y (Ay):</span>
+                  <span class="text-lab-grayDark">Y축 진폭 (Ay):</span>
                   <span id="lbl-sim-ay" class="font-bold">1.00</span>
                 </div>
                 <input id="sim-ay" type="range" min="0.1" max="1.0" step="0.05" value="1.0" class="w-full">
@@ -212,7 +212,7 @@ export class LissajousSimulatorTab {
 
               <div>
                 <div class="flex justify-between mb-1">
-                  <span class="text-lab-grayDark">Phase Difference (φ):</span>
+                  <span class="text-lab-grayDark">위상차 (φ):</span>
                   <span id="lbl-sim-phase" class="font-bold">90.0°</span>
                 </div>
                 <input id="sim-phase" type="range" min="0" max="360" step="1" value="90" class="w-full">
@@ -221,7 +221,7 @@ export class LissajousSimulatorTab {
               <div class="pt-2 border-t border-lab-light flex items-center justify-between">
                 <label class="flex items-center gap-2 cursor-pointer text-xs">
                   <input id="chk-sim-autophase" type="checkbox" class="accent-lab-black">
-                  Auto Phase Rotation (Continuous Drift)
+                  연속 위상 회전 (위상 드리프트)
                 </label>
               </div>
             </div>

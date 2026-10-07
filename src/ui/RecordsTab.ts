@@ -129,7 +129,7 @@ export class RecordsTab {
       tbody.innerHTML = `
         <tr>
           <td colspan="10" class="py-8 text-center text-xs font-mono text-lab-grayDark">
-            기록된 실험 데이터가 없습니다. Pure Tone 화면에서 "Record Trial"을 실행하세요.
+            기록된 실험 데이터가 없습니다. Pure Tone 화면에서 "시행 기록 저장"을 실행하세요.
           </td>
         </tr>
       `;
@@ -161,7 +161,7 @@ export class RecordsTab {
         </td>
         <td class="py-2.5 px-3 text-right">
           <button data-del-trial="${t.trialId}" class="text-lab-grayDark hover:text-lab-red p-1">
-            ✕
+            삭제
           </button>
         </td>
       </tr>
@@ -180,21 +180,21 @@ export class RecordsTab {
             <span class="w-2.5 h-2.5 bg-lab-black rounded-full"></span>
             <div>
               <h2 class="text-xs font-mono font-bold text-lab-black uppercase tracking-wider">
-                Experiment Trial Records & Statistical Aggregation
+                실험 데이터 기록 및 통계 집계
               </h2>
               <p class="text-[11px] font-mono text-lab-grayDark">
-                Quantitative Accuracy Analysis, Error Distributions, RFC-4180 CSV Export
+                오차 정량 분석, 분포 히스토그램, RFC-4180 표준 CSV 내보내기
               </p>
             </div>
           </div>
 
           <div class="flex items-center gap-3">
-            <input id="input-filter-cond" type="text" placeholder="Filter by Name / Condition..." class="lab-input w-56 text-xs">
+            <input id="input-filter-cond" type="text" placeholder="Filter by Name / 실험 조건..." class="lab-input w-56 text-xs">
             <button id="btn-export-csv" class="lab-btn-accent px-4 py-2 font-bold">
-              📥 Export CSV
+              CSV 내보내기
             </button>
             <button id="btn-clear-trials" class="lab-btn px-3 py-2 text-lab-red hover:bg-red-50">
-              🗑 Clear All
+              전체 삭제
             </button>
           </div>
         </div>
@@ -205,7 +205,7 @@ export class RecordsTab {
           <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
             
             <div class="lab-card-compact flex flex-col justify-between">
-              <span class="text-[10px] font-mono text-lab-grayDark uppercase">Total Trials</span>
+              <span class="text-[10px] font-mono text-lab-grayDark uppercase">총 시행 횟수</span>
               <div class="text-2xl font-mono font-bold text-lab-black">${stats.total}</div>
               <span class="text-[10px] font-mono text-lab-grayDark">
                 PASS: <strong class="text-emerald-700">${stats.passCount}</strong> / FAIL: <strong class="text-lab-red">${stats.failCount}</strong>
@@ -213,31 +213,31 @@ export class RecordsTab {
             </div>
 
             <div class="lab-card-compact flex flex-col justify-between">
-              <span class="text-[10px] font-mono text-lab-grayDark uppercase">PASS Acceptance Rate</span>
+              <span class="text-[10px] font-mono text-lab-grayDark uppercase">PASS 수락률</span>
               <div class="text-2xl font-mono font-bold text-emerald-800">${stats.passRate.toFixed(1)}%</div>
               <span class="text-[10px] font-mono text-lab-grayDark">Threshold D &lt; 1.00</span>
             </div>
 
             <div class="lab-card-compact flex flex-col justify-between">
-              <span class="text-[10px] font-mono text-lab-grayDark uppercase">Score D Mean ± SD</span>
+              <span class="text-[10px] font-mono text-lab-grayDark uppercase">점수 D 평균 및 표준편차</span>
               <div class="text-xl font-mono font-bold text-lab-black">${stats.meanD.toFixed(3)} ± ${stats.sdD.toFixed(3)}</div>
               <span class="text-[10px] font-mono text-lab-grayDark">Weighted Composite Error</span>
             </div>
 
             <div class="lab-card-compact flex flex-col justify-between">
-              <span class="text-[10px] font-mono text-lab-grayDark uppercase">Freq Error Mean ± SD</span>
+              <span class="text-[10px] font-mono text-lab-grayDark uppercase">진동수 오차 (Mean ± SD)</span>
               <div class="text-lg font-mono font-bold text-lab-black">${stats.meanFreqErr.toFixed(2)} ± ${stats.sdFreqErr.toFixed(2)} Hz</div>
               <span class="text-[10px] font-mono text-lab-grayDark">Target: 440 Hz</span>
             </div>
 
             <div class="lab-card-compact flex flex-col justify-between">
-              <span class="text-[10px] font-mono text-lab-grayDark uppercase">Phase Error Mean ± SD</span>
+              <span class="text-[10px] font-mono text-lab-grayDark uppercase">위상 오차 (Mean ± SD)</span>
               <div class="text-lg font-mono font-bold text-lab-black">${stats.meanPhaseErr.toFixed(1)} ± ${stats.sdPhaseErr.toFixed(1)}°</div>
               <span class="text-[10px] font-mono text-lab-grayDark">Circular Distance Metric</span>
             </div>
 
             <div class="lab-card-compact flex flex-col justify-between">
-              <span class="text-[10px] font-mono text-lab-grayDark uppercase">Experiment Status</span>
+              <span class="text-[10px] font-mono text-lab-grayDark uppercase">실험 진행 상태</span>
               <div class="text-sm font-mono font-bold text-lab-black">${stats.total >= 10 ? "Adequate Sample Size" : "Collecting Samples..."}</div>
               <span class="text-[10px] font-mono text-lab-grayDark">N=${stats.total} Trials Recorded</span>
             </div>
@@ -247,7 +247,7 @@ export class RecordsTab {
           <!-- Histogram Canvas (5 cols) -->
           <div class="lg:col-span-5 lab-card flex flex-col">
             <div class="flex items-center justify-between pb-1 mb-1 border-b border-lab-light">
-              <span class="text-xs font-mono font-bold text-lab-black">Score D Frequency Histogram</span>
+              <span class="text-xs font-mono font-bold text-lab-black">점수 D 빈도 히스토그램</span>
               <span class="text-[10px] font-mono text-lab-grayDark">Distribution Profile</span>
             </div>
             <div class="relative w-full h-44 bg-white border border-lab-gray rounded-sm overflow-hidden">
@@ -259,7 +259,7 @@ export class RecordsTab {
         <!-- Trial History Table -->
         <div class="lab-card overflow-hidden p-0">
           <div class="p-3 bg-lab-light/50 border-b border-lab-gray flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-lab-black">RECORDED TRIALS LOG</span>
+            <span class="text-xs font-mono font-bold text-lab-black">시행 기록 로그</span>
             <span class="text-[10px] font-mono text-lab-grayDark">Ordered latest first</span>
           </div>
 
@@ -270,7 +270,7 @@ export class RecordsTab {
                   <th class="py-2.5 px-3">Trial ID</th>
                   <th class="py-2.5 px-3">Time</th>
                   <th class="py-2.5 px-3">Experiment</th>
-                  <th class="py-2.5 px-3">Condition</th>
+                  <th class="py-2.5 px-3">실험 조건</th>
                   <th class="py-2.5 px-3">Frequency</th>
                   <th class="py-2.5 px-3">Amplitude</th>
                   <th class="py-2.5 px-3">Phase Diff</th>

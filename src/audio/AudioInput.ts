@@ -18,7 +18,7 @@ export class AudioInput {
   private analyserLeft: AnalyserNode | null = null;
   private analyserRight: AnalyserNode | null = null;
 
-  // Synthetic Test Signal Node
+  // Synthetic 테스트 신호 Node
   private syntheticNode: AudioNode | null = null;
   private isSyntheticActive = false;
 
