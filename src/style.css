@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F7F6F2;
+    color: #2B2B2E;
+    font-feature-settings: "tnum" 1;
+  }
+
+  input[type="range"] {
+    @apply accent-lab-red h-1.5 bg-lab-light rounded-lg appearance-none cursor-pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    @apply appearance-none w-3.5 h-3.5 bg-lab-black rounded-full border border-lab-grayDark hover:scale-110 transition-transform;
+  }
+}
+
+@layer components {
+  .lab-card {
+    @apply bg-white/80 backdrop-blur-sm border border-lab-gray rounded-sm p-4 shadow-sm;
+  }
+
+  .lab-card-compact {
+    @apply bg-white/80 backdrop-blur-sm border border-lab-gray rounded-sm p-3;
+  }
+
+  .lab-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-mono font-medium rounded-full border;
+  }
+
+  .lab-badge-good {
+    @apply bg-emerald-50 text-emerald-800 border-emerald-300;
+  }
+
+  .lab-badge-warn {
+    @apply bg-amber-50 text-amber-800 border-amber-300;
+  }
+
+  .lab-badge-danger {
+    @apply bg-red-50 text-lab-red border-red-300;
+  }
+
+  .lab-badge-neutral {
+    @apply bg-lab-light text-lab-dark border-lab-gray;
+  }
+
+  .lab-btn {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 text-xs font-mono font-medium rounded-sm border border-lab-grayDark bg-white text-lab-black hover:bg-lab-light hover:border-lab-black active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none;
+  }
+
+  .lab-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-3.5 py-1.5 text-xs font-mono font-medium rounded-sm bg-lab-black text-white hover:bg-lab-dark active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .lab-btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-3.5 py-1.5 text-xs font-mono font-medium rounded-sm bg-lab-red text-white hover:opacity-90 active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .lab-input {
+    @apply px-2.5 py-1 text-xs font-mono bg-white border border-lab-gray rounded-sm focus:outline-none focus:border-lab-black text-lab-black transition-colors;
+  }
+
+  .lab-tab {
+    @apply px-4 py-2.5 text-xs font-mono uppercase tracking-wider border-b-2 font-medium transition-all text-lab-grayDark border-transparent hover:text-lab-black hover:border-lab-gray;
+  }
+
+  .lab-tab-active {
+    @apply text-lab-black border-lab-black font-semibold bg-white/40;
+  }
+}
+
+/* Custom Scrollbar for scientific logs & tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F6F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #C2C1BB;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #888783;
+}
