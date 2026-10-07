@@ -192,22 +192,33 @@ export class PureToneTab {
     const specCanvas = this.container.querySelector("#canvas-spectrum") as HTMLCanvasElement | null;
     const lissCanvas = this.container.querySelector("#canvas-lissajous") as HTMLCanvasElement | null;
 
+    const dpr = window.devicePixelRatio || 1;
+
     if (waveCanvas) {
-      waveCanvas.width = waveCanvas.clientWidth * window.devicePixelRatio || 600;
-      waveCanvas.height = waveCanvas.clientHeight * window.devicePixelRatio || 160;
+      const w = waveCanvas.clientWidth > 0 ? waveCanvas.clientWidth : 600;
+      const h = waveCanvas.clientHeight > 0 ? waveCanvas.clientHeight : 176;
+      waveCanvas.width = Math.floor(w * dpr);
+      waveCanvas.height = Math.floor(h * dpr);
       this.waveformRenderer = new WaveformRenderer(waveCanvas);
+      this.waveformRenderer.render(new Float32Array(1024));
     }
 
     if (specCanvas) {
-      specCanvas.width = specCanvas.clientWidth * window.devicePixelRatio || 600;
-      specCanvas.height = specCanvas.clientHeight * window.devicePixelRatio || 160;
+      const w = specCanvas.clientWidth > 0 ? specCanvas.clientWidth : 500;
+      const h = specCanvas.clientHeight > 0 ? specCanvas.clientHeight : 224;
+      specCanvas.width = Math.floor(w * dpr);
+      specCanvas.height = Math.floor(h * dpr);
       this.spectrumRenderer = new SpectrumRenderer(specCanvas);
+      this.spectrumRenderer.render(new Float32Array(512).fill(-100), 48000, 0, -100);
     }
 
     if (lissCanvas) {
-      lissCanvas.width = lissCanvas.clientWidth * window.devicePixelRatio || 400;
-      lissCanvas.height = lissCanvas.clientHeight * window.devicePixelRatio || 400;
+      const w = lissCanvas.clientWidth > 0 ? lissCanvas.clientWidth : 400;
+      const h = lissCanvas.clientHeight > 0 ? lissCanvas.clientHeight : 224;
+      lissCanvas.width = Math.floor(w * dpr);
+      lissCanvas.height = Math.floor(h * dpr);
       this.lissajousRenderer = new LissajousRenderer(lissCanvas);
+      this.lissajousRenderer.render(new Float32Array(1024), new Float32Array(1024), "STANDBY", null, false);
     }
   }
 
