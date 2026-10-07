@@ -142,7 +142,7 @@ export class LissajousRenderer {
 
     // Axis Labels
     ctx.fillStyle = "#888783";
-    ctx.font = "9px 'JetBrains Mono', monospace";
+    ctx.font = "9px 'Asta Sans', sans-serif";
     ctx.textAlign = "center";
     ctx.fillText("X: Ref / CH1", cx, cy + r + 18);
     ctx.save();
@@ -160,7 +160,7 @@ export class LissajousRenderer {
 
   private drawModeBadge(modeLabel: string, phaseDeg: number | null, isSimulated: boolean) {
     const ctx = this.ctx;
-    ctx.font = "bold 9px 'JetBrains Mono', monospace";
+    ctx.font = "bold 9px 'Asta Sans', sans-serif";
 
     const badgeText = modeLabel;
     const textWidth = ctx.measureText(badgeText).width;

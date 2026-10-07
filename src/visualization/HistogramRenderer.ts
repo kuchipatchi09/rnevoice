@@ -22,7 +22,7 @@ export class HistogramRenderer {
 
     if (scores.length === 0) {
       ctx.fillStyle = "#888783";
-      ctx.font = "11px 'JetBrains Mono', monospace";
+      ctx.font = "11px 'Asta Sans', sans-serif";
       ctx.textAlign = "center";
       ctx.fillText("No trial data recorded yet", width / 2, height / 2);
       return;
@@ -87,14 +87,14 @@ export class HistogramRenderer {
       ctx.setLineDash([]);
 
       ctx.fillStyle = "#A33A31";
-      ctx.font = "9px 'JetBrains Mono', monospace";
+      ctx.font = "9px 'Asta Sans', sans-serif";
       ctx.textAlign = "center";
       ctx.fillText(`Threshold D=${threshold}`, threshX, padT - 3);
     }
 
     // Ticks & Labels
     ctx.fillStyle = "#888783";
-    ctx.font = "9px 'JetBrains Mono', monospace";
+    ctx.font = "9px 'Asta Sans', sans-serif";
     ctx.textAlign = "right";
     ctx.fillText(`${maxCount}`, padL - 5, padT + 8);
     ctx.fillText("0", padL - 5, padT + chartH);

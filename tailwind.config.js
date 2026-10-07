@@ -19,7 +19,7 @@ export default {
       },
       fontFamily: {
         sans: ["'Asta Sans'", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "Roboto", "sans-serif"],
-        mono: ["'JetBrains Mono'", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"]
+        mono: ["'Asta Sans'", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "sans-serif"]
       }
     },
   },

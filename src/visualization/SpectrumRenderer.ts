@@ -91,7 +91,7 @@ export class SpectrumRenderer {
 
       // Peak badge tooltip
       const labelText = `${peakFrequency.toFixed(1)} Hz (${peakDb.toFixed(1)} dB)`;
-      ctx.font = "bold 10px 'JetBrains Mono', monospace";
+      ctx.font = "bold 10px 'Asta Sans', sans-serif";
       const textWidth = ctx.measureText(labelText).width;
       
       let badgeX = peakCanvasX - textWidth / 2;
@@ -114,7 +114,7 @@ export class SpectrumRenderer {
 
     // Horizontal dB lines (-20, -40, -60, -80, -100 dB)
     const dbSteps = [-20, -40, -60, -80, -100];
-    ctx.font = "9px 'JetBrains Mono', monospace";
+    ctx.font = "9px 'Asta Sans', sans-serif";
     ctx.fillStyle = "#888783";
     ctx.textAlign = "left";
 

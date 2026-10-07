@@ -76,7 +76,7 @@ export class WaveformRenderer {
 
     // Scale Ticks Text
     ctx.fillStyle = "#888783";
-    ctx.font = "10px 'JetBrains Mono', monospace";
+    ctx.font = "10px 'Asta Sans', sans-serif";
     ctx.textAlign = "left";
     ctx.fillText("+1.0", 6, 14);
     ctx.fillText(" 0.0", 6, height * 0.5 - 3);
@@ -128,7 +128,7 @@ export class WaveformRenderer {
 
   private drawLegend(isStereo: boolean) {
     const ctx = this.ctx;
-    ctx.font = "10px 'JetBrains Mono', monospace";
+    ctx.font = "10px 'Asta Sans', sans-serif";
     ctx.textAlign = "right";
 
     if (isStereo) {

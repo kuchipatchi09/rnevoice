@@ -107,7 +107,7 @@ export class SpectrogramRenderer {
     freqs: number[]
   ) {
     const ctx = this.ctx;
-    ctx.font = "9px 'JetBrains Mono', monospace";
+    ctx.font = "9px 'Asta Sans', sans-serif";
     ctx.fillStyle = "#535356";
 
     // Y Axis (Frequency)

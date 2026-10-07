@@ -3,9 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  *, *::before, *::after {
+    font-family: 'Asta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
   body {
     background-color: #F7F6F2;
     color: #2B2B2E;
+    font-family: 'Asta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-feature-settings: "tnum" 1;
   }
 
